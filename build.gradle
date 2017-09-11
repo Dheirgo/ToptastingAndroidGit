@@ -1,0 +1,136 @@
+apply plugin: 'com.android.application'
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+        maven {
+            url "https://maven.google.com"
+        }
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        // These docs use an open ended version so that our plugin
+        // can be updated quickly in response to Android tooling updates
+        classpath 'io.fabric.tools:gradle:1.22.1'
+        classpath 'com.google.gms:google-services:3.0.0'
+        classpath 'com.android.tools.build:gradle:1.1.0'
+    }
+}
+
+apply plugin: 'io.fabric'
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        applicationId "com.toptasting.androidapp"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 266
+        versionName "2.1.10"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        manifestPlaceholders = [onesignal_app_id               : "73615fec-d5ef-4826-b94b-edea056e005c",
+                                onesignal_google_project_number: "REMOTE",
+                                FABRIC_API_KEY                 : "156e49c812c63394eca3fb31c84d19e61b662bed"]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    configurations {
+        all*.exclude module: 'commons-io'
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE'
+    }
+}
+
+static String getVersionName() {
+    return "11.2.2"
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile('com.facebook.android:facebook-android-sdk:4.18.0') {
+        exclude module: 'support-v4'
+    }
+    compile('com.digits.sdk.android:digits:2.0.5@aar') {
+        transitive = true;
+    }
+
+    //compile("com.twitter.sdk.android:twitter-core:3.0.0@aar") { transitive = true }
+
+    compile 'com.google.android.gms:play-services-maps:' + getVersionName()
+    compile 'com.google.android.gms:play-services-ads:' + getVersionName()
+    compile 'com.google.android.gms:play-services-auth:' + getVersionName()
+    compile 'com.google.android.gms:play-services-gcm:' + getVersionName()
+    compile 'com.google.android.gms:play-services-location:' + getVersionName()
+    compile 'com.google.android.gms:play-services-wallet:' + getVersionName()
+    compile 'com.google.android.gms:play-services-analytics:' + getVersionName()
+    compile 'com.google.firebase:firebase-messaging:' + getVersionName()
+    compile 'com.google.firebase:firebase-core:' + getVersionName()
+
+    compile 'com.google.firebase:firebase-auth:' + getVersionName()
+    //compile 'com.firebaseui:firebase-ui:2.3.0'
+    
+
+    compile 'com.hbb20:ccp:2.0.3'
+    compile 'com.firebaseui:firebase-ui-auth:2.3.0'
+    compile 'com.firebase:digitsmigrationhelpers:0.1.1'
+    compile 'com.firebase:firebase-client-android:2.3.1'
+    compile 'com.github.lzyzsd:circleprogress:1.1.0'
+    compile 'com.android.support:design:26.0.1'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.daimajia.slider:library:1.1.5@aar'
+    compile 'com.github.ParkSangGwon:TedPicker:v1.0.10'
+    compile 'com.mcxiaoke.volley:library:1.0.0'
+    compile 'it.sephiroth.android.exif:library:1.0.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'jp.wasabeef:glide-transformations:2.0.0'
+    compile 'com.afollestad.material-dialogs:commons:0.9.3.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.vdurmont:emoji-java:3.1.3'
+    compile 'com.stripe:stripe-android:4.1.1'
+    compile 'com.onesignal:OneSignal:3.5.3'
+    compile 'com.android.support:support-v4:26.0.1'
+    compile 'com.android.support:appcompat-v7:26.0.1'
+    testCompile 'junit:junit:4.12'
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
