@@ -28,17 +28,20 @@ android {
         applicationId "com.toptasting.androidapp"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 266
-        versionName "2.1.10"
+        versionCode 269
+        versionName "2.2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         manifestPlaceholders = [onesignal_app_id               : "73615fec-d5ef-4826-b94b-edea056e005c",
                                 onesignal_google_project_number: "REMOTE",
                                 FABRIC_API_KEY                 : "156e49c812c63394eca3fb31c84d19e61b662bed"]
     }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -85,7 +88,7 @@ dependencies {
 
     compile 'com.google.firebase:firebase-auth:' + getVersionName()
     //compile 'com.firebaseui:firebase-ui:2.3.0'
-    
+
 
     compile 'com.hbb20:ccp:2.0.3'
     compile 'com.firebaseui:firebase-ui-auth:2.3.0'
