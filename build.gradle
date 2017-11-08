@@ -28,8 +28,8 @@ android {
         applicationId "com.toptasting.androidapp"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 269
-        versionName "2.2.0"
+        versionCode 272
+        versionName "2.2.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         manifestPlaceholders = [onesignal_app_id               : "73615fec-d5ef-4826-b94b-edea056e005c",
@@ -89,6 +89,7 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:' + getVersionName()
     //compile 'com.firebaseui:firebase-ui:2.3.0'
 
+    compile 'com.github.toanvc:floatingactionmenu:0.8.9'
 
     compile 'com.hbb20:ccp:2.0.3'
     compile 'com.firebaseui:firebase-ui-auth:2.3.0'
