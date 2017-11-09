@@ -1,21 +1,29 @@
 apply plugin: 'com.android.application'
 
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://maven.google.com" }
+        maven { url "https://jitpack.io" }
+        maven { url "https://s3.amazonaws.com/repo.commonsware.com" }
+
+        mavenCentral()
+    }
+}
+
 buildscript {
     repositories {
-        maven { url 'https://maven.fabric.io/public' }
-        maven {
-            url "https://maven.google.com"
-        }
-        mavenCentral()
         jcenter()
+        maven { url 'https://maven.fabric.io/public' }
     }
 
     dependencies {
         // These docs use an open ended version so that our plugin
         // can be updated quickly in response to Android tooling updates
+        classpath 'com.android.tools.build:gradle:2.3.3'
         classpath 'io.fabric.tools:gradle:1.22.1'
         classpath 'com.google.gms:google-services:3.0.0'
-        classpath 'com.android.tools.build:gradle:1.1.0'
+        classpath "com.android.databinding:dataBinder:1.+"
     }
 }
 
@@ -23,7 +31,8 @@ apply plugin: 'io.fabric'
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
-    useLibrary 'org.apache.http.legacy'
+    //useLibrary 'org.apache.http.legacy'
+    //dataBinding.enabled = true
     defaultConfig {
         applicationId "com.toptasting.androidapp"
         minSdkVersion 19
@@ -44,9 +53,6 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-    dataBinding {
-        enabled = true
     }
 
     configurations {
@@ -70,12 +76,8 @@ dependencies {
     compile('com.facebook.android:facebook-android-sdk:4.18.0') {
         exclude module: 'support-v4'
     }
-    compile('com.digits.sdk.android:digits:2.0.5@aar') {
-        transitive = true;
-    }
 
-    //compile("com.twitter.sdk.android:twitter-core:3.0.0@aar") { transitive = true }
-
+    compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile 'com.google.android.gms:play-services-maps:' + getVersionName()
     compile 'com.google.android.gms:play-services-ads:' + getVersionName()
     compile 'com.google.android.gms:play-services-auth:' + getVersionName()
@@ -93,7 +95,6 @@ dependencies {
 
     compile 'com.hbb20:ccp:2.0.3'
     compile 'com.firebaseui:firebase-ui-auth:2.3.0'
-    compile 'com.firebase:digitsmigrationhelpers:0.1.1'
     compile 'com.firebase:firebase-client-android:2.3.1'
     compile 'com.github.lzyzsd:circleprogress:1.1.0'
     compile 'com.android.support:design:26.0.1'

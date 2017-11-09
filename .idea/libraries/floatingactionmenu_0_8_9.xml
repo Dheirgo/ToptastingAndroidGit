@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="floatingactionmenu-0.8.9">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/bce2f2e103c1514f22c9247dbda247424a514a88/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/bce2f2e103c1514f22c9247dbda247424a514a88/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.toanvc/floatingactionmenu/0.8.9/f0c27dda3d8a742fa1a24ce12792f1149ee57c1/floatingactionmenu-0.8.9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
